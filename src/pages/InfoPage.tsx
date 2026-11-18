@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './InfoPage.css';
 
-// Укажите порт сами: например "http://localhost:5208/api/birds/info"
+//---порт
 const API_URL = "http://localhost:5208/api/birds/info";
 
+//---модель того какой ответ мі получим от инфо апи
 interface BirdInfo {
   species: string;
   appearance: string | null;
@@ -12,16 +13,16 @@ interface BirdInfo {
 }
 
 export default function InfoPage() {
-  const [species, setSpecies] = useState('');
-  const [result, setResult] = useState<BirdInfo | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [species, setSpecies] = useState('');//------------------поле для ввода вида птицы
+  const [result, setResult] = useState<BirdInfo | null>(null);//-результата от ии либо BirdInfo который я прописал выше либо ничего null
+  const [loading, setLoading] = useState(false);//---------------для отображения загрузки
+  const [error, setError] = useState('');//----------------------для отображения ошибки
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();    
     setError('');
     setResult(null);
-
+    //---проверяем токен
     const token = localStorage.getItem('token');
     if (!token) {
       setError('Вы не авторизованы.');
@@ -30,6 +31,7 @@ export default function InfoPage() {
     }
 
     try {
+      //---делаем запрос на порт с# http://localhost:5208/api/birds/info черещ фетч
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -40,14 +42,14 @@ export default function InfoPage() {
       });
 
       if (!response.ok) {
-        // C# может вернуть BadRequest("Error with Python Ai")
+        //---если статус код от с# не 200 то ошибка
         const text = await response.text();
         throw new Error(text || 'Помилка від сервера');
       }
 
       const data: BirdInfo = await response.json();
 
-      // Если C# вернул лимит
+      //---Если C# вернул лимит, знаю что надо было сделать дополнительное поле в request но уже ничего не поделаешь
       if (data.species === "limit") {
         setError('Ліміт пошуку, купіть підписку');
       } else {

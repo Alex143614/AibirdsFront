@@ -71,7 +71,7 @@
 /* Рамка для картинки (нормальная, без пунктира) */
 .image-preview {
   width: 100%;
-  height: 350px; /* Высота квадрата */
+  height: 500px; /* Высота квадрата */
   background-color: #f8f9fa;
   border: 1px solid #ddd; /* Обычная серая рамка */
   border-radius: 8px;
@@ -83,7 +83,7 @@
 
 /* Картинка внутри рамки */
 .image-preview img {
-  width: 100%;
+  width: 200%;
   height: 100%;
   object-fit: cover; /* Заполняет весь квадрат, обрезая лишнее */
 }

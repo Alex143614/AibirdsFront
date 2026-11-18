@@ -17,14 +17,14 @@ export default function ImagePage() {
     setLoading(true);
     setError('');
     setResult(null);
-
+    //---проверка авторизации
     const token = localStorage.getItem('token');
     if (!token) {
       setError('Вы не зареєстровані');
       setLoading(false);
       return;
     }
-
+    //---фетч запрос на получение вида птицы от url
     try {
       const response = await fetch("http://localhost:5208/api/birds/image", {
         method: 'POST',
@@ -41,7 +41,7 @@ export default function ImagePage() {
 
       const data = await response.json();
       
-      // Если C# вернул лимит
+      //---Если C# вернул лимит
       if (data.species === "limit") {
         setError('Ліміт достигнут, чекайте день або купіть підписку');
       } else {

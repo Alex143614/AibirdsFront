@@ -4,24 +4,24 @@ import './SoundPage.css';
 const API_URL = "http://localhost:5208/api/birds/audio";
 
 export default function SoundPage() {
-  const [soundUrl, setSoundUrl] = useState('');
-  const [result, setResult] = useState<{ species: string; confidence: number } | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [soundUrl, setSoundUrl] = useState('');//--------------------------------------------------поле для ввода юрл
+  const [result, setResult] = useState<{ species: string; confidence: number } | null>(null);//----результат от сервера, увереность и вид птицы
+  const [loading, setLoading] = useState(false);//-------------------------------------------------для отображения загрузки
+  const [error, setError] = useState('');//--------------------------------------------------------для отображения ошибки
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
     setResult(null);
-
+    //---проверка наличия токена
     const token = localStorage.getItem('token');
     if (!token) {
       setError('Ви не зареєстровані');
       setLoading(false);
       return;
     }
-
+    //---делаем фетч запрос на http://localhost:5208/api/birds/audio, выбираем тип запроса POST, application/json что отправим и "Bearer " + token передаем токен
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
@@ -31,14 +31,14 @@ export default function SoundPage() {
         },
         body: JSON.stringify({ url: soundUrl })
       });
-
+      //---если статус код от сервера не из 200 серии то ошибка
       if (!response.ok) {
         throw new Error('Помилка при аналізі');
       }
 
       const data = await response.json();
 
-      // Если C# вернул лимит
+      //---Если C# вернул лимит, знаю что надо было под это сделать отдельное поле
       if (data.species === "limit") {
         setError('Ви достигнули ліміту на день');
       } else {

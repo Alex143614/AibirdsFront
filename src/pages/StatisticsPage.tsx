@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import {
   PieChart, Pie, Cell, Tooltip, Legend,
   BarChart, Bar, XAxis, YAxis, ResponsiveContainer
-} from 'recharts';
+} from 'recharts';//-------------------библиотеки для графиков
 import './StatisticsPage.css';
 
+//---порт на получение статистики
 const BASE_URL = "http://localhost:5208/api/statistics";
 
 
@@ -20,10 +21,10 @@ async function getData(path: string) {
 }
 
 export default function StatisticsPage() {
-  const [types, setTypes] = useState<{ name: string; value: number }[]>([]);
-  const [users, setUsers] = useState<{ username: string; requestCount: number }[]>([]);
-  const [birds, setBirds] = useState<{ species: string; requestCount: number }[]>([]);
-  const [error, setError] = useState('');
+  const [types, setTypes] = useState<{ name: string; value: number }[]>([]);//-------------статистика по тому какие запросы самые частые по изображению, инфо о птичке или ее пение
+  const [users, setUsers] = useState<{ username: string; requestCount: number }[]>([]);//--статистика по тому какие пользователи делали самые частые запросы, это все в таблице MainPage
+  const [birds, setBirds] = useState<{ species: string; requestCount: number }[]>([]);//---статистика по тому какие какие птицы чаще всего возвращала ии от изображений или аудио а так же от того на какой вид человек хочет получить доп информацию
+  const [error, setError] = useState('');//------------------------------------------------для отображения ошибки
 
   useEffect(() => {
     const load = async () => {
