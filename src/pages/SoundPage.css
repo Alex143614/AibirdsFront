@@ -1,0 +1,79 @@
+.sound-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sound-page h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.sound-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sound-input {
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #c9ced6;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sound-input:focus {
+  border-color: #3b82f6;
+}
+
+.sound-btn {
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sound-btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.sound-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sound-error {
+  margin: 0;
+  padding: 10px 14px;
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  border-radius: 8px;
+}
+
+.sound-result-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e2e5ea;
+  border-radius: 12px;
+}
+
+.sound-preview audio {
+  width: 100%;
+}
+
+.result-info p {
+  margin: 4px 0;
+}

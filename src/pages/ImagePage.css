@@ -1,0 +1,103 @@
+.image-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.image-page h1 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.image-form {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.image-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.image-btn {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.image-btn:hover {
+  background-color: #0056b3;
+}
+
+.image-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.image-error {
+  color: #dc3545;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Контейнер для картинки и результата */
+.image-result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Рамка для картинки (нормальная, без пунктира) */
+.image-preview {
+  width: 100%;
+  height: 350px; /* Высота квадрата */
+  background-color: #f8f9fa;
+  border: 1px solid #ddd; /* Обычная серая рамка */
+  border-radius: 8px;
+  overflow: hidden; /* Обрезаем всё, что вылезает за рамки */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Картинка внутри рамки */
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Заполняет весь квадрат, обрезая лишнее */
+}
+
+/* Блок с текстом результата */
+.result-info {
+  width: 100%;
+  background-color: #e9ecef;
+  padding: 15px;
+  border-radius: 8px;
+  color: #333;
+}
+
+.result-info p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
